@@ -3,17 +3,35 @@ package io.github.educontessi.pixkeyregistration.core.model;
 import io.github.educontessi.pixkeyregistration.core.enums.TipoChave;
 import io.github.educontessi.pixkeyregistration.core.enums.TipoConta;
 
+import javax.validation.constraints.*;
 import java.util.UUID;
 
 public class ChavePix extends BaseModel {
 
     private UUID id;
+
+    @NotNull
     private TipoChave tipoChave;
+
+    @NotBlank
     private String valorChave;
+
+    @NotNull
     private TipoConta tipoConta;
-    private int agencia;
-    private int conta;
+
+    @NotNull
+    @Digits(integer = 4, fraction = 0)
+    private Integer agencia;
+
+    @NotNull
+    @Digits(integer = 8, fraction = 0)
+    private Integer conta;
+
+    @NotBlank
+    @Size(min = 3, max = 30)
     private String nomeCorrentista;
+
+    @Size(min = 3, max = 45)
     private String sobrenomeCorrentista;
 
     public UUID getId() {
@@ -48,19 +66,19 @@ public class ChavePix extends BaseModel {
         this.tipoConta = tipoConta;
     }
 
-    public int getAgencia() {
+    public Integer getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(int agencia) {
+    public void setAgencia(Integer agencia) {
         this.agencia = agencia;
     }
 
-    public int getConta() {
+    public Integer getConta() {
         return conta;
     }
 
-    public void setConta(int conta) {
+    public void setConta(Integer conta) {
         this.conta = conta;
     }
 

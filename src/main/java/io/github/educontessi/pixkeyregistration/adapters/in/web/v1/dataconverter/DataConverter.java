@@ -18,7 +18,7 @@ public abstract class DataConverter<M extends BaseModel, D extends BaseDto> {
 
     public abstract D convertToDto(D dto, M model);
 
-    protected String[] getIgnoreProperties() {
+    protected String[] getIgnoreProperties() { // todo: rever isso
         Set<String> list = new HashSet<>();
         //list.add("created");
         //list.add("changed");

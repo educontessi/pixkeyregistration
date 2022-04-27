@@ -2,6 +2,7 @@ package io.github.educontessi.pixkeyregistration.adapters.in.web.v1.datamanager;
 
 import io.github.educontessi.pixkeyregistration.adapters.in.web.v1.dataconverter.ChavePixInDataConverter;
 import io.github.educontessi.pixkeyregistration.adapters.in.web.v1.dto.ChavePixDto;
+import io.github.educontessi.pixkeyregistration.core.enums.TipoPessoa;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
 import io.github.educontessi.pixkeyregistration.core.usecase.validation.ChavePixValidacoes;
 import io.github.educontessi.pixkeyregistration.ports.in.ChavePixUseCasePort;
@@ -19,7 +20,9 @@ public class ChavePixDataManager {
         this.dataConverter = dataConverter;
     }
 
-    public ChavePixDto save(ChavePixDto dto) {
+    public ChavePixDto save(ChavePixDto dto, String tipoPessoaPathVariable) {
+        TipoPessoa tipoPessoa = TipoPessoa.valueOfPathVariable(tipoPessoaPathVariable);
+
         var model = new ChavePix();
         dataConverter.copyToModel(model, dto);
         model = chavePixUseCasePort.save(model, ChavePixValidacoes.validationsOnSave(model));

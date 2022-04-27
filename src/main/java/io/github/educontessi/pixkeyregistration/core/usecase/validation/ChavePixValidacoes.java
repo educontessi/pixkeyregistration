@@ -1,7 +1,7 @@
 package io.github.educontessi.pixkeyregistration.core.usecase.validation;
 
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
-import io.github.educontessi.pixkeyregistration.core.usecase.validation.businessrule.ObjectNotNull;
+import io.github.educontessi.pixkeyregistration.core.usecase.validation.regrasdenegocio.ObjectNotNull;
 
 import java.util.ArrayList;
 import java.util.List;

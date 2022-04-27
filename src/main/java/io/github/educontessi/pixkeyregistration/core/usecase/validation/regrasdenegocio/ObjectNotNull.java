@@ -1,4 +1,4 @@
-package io.github.educontessi.pixkeyregistration.core.usecase.validation.businessrule;
+package io.github.educontessi.pixkeyregistration.core.usecase.validation.regrasdenegocio;
 
 import io.github.educontessi.pixkeyregistration.core.exception.NegocioException;
 import io.github.educontessi.pixkeyregistration.core.usecase.validation.Validator;

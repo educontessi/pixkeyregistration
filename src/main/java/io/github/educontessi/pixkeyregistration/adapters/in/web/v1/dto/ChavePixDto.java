@@ -11,8 +11,8 @@ public class ChavePixDto extends BaseDto {
     private TipoChave tipoChave;
     private String valorChave;
     private TipoConta tipoConta;
-    private int agencia;
-    private int conta;
+    private Integer agencia;
+    private Integer conta;
     private String nomeCorrentista;
     private String sobrenomeCorrentista;
 
@@ -48,19 +48,19 @@ public class ChavePixDto extends BaseDto {
         this.tipoConta = tipoConta;
     }
 
-    public int getAgencia() {
+    public Integer getAgencia() {
         return agencia;
     }
 
-    public void setAgencia(int agencia) {
+    public void setAgencia(Integer agencia) {
         this.agencia = agencia;
     }
 
-    public int getConta() {
+    public Integer getConta() {
         return conta;
     }
 
-    public void setConta(int conta) {
+    public void setConta(Integer conta) {
         this.conta = conta;
     }
 
