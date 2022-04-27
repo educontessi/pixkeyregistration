@@ -2,6 +2,7 @@ package io.github.educontessi.pixkeyregistration.adapters.out.persistence.entity
 
 import io.github.educontessi.pixkeyregistration.core.enums.TipoChave;
 import io.github.educontessi.pixkeyregistration.core.enums.TipoConta;
+import io.github.educontessi.pixkeyregistration.core.enums.TipoPessoa;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
@@ -17,6 +18,10 @@ public class ChavePixEntity extends BaseEntity {
     private UUID id;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_pessoa")
+    private TipoPessoa tipoPessoa;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "tipo_chave")
     private TipoChave tipoChave;
 
@@ -27,11 +32,11 @@ public class ChavePixEntity extends BaseEntity {
     @Column(name = "tipo_conta")
     private TipoConta tipoConta;
 
-    @Column(name = "agencia")
-    private int agencia;
+    @Column(name = "numero_agencia")
+    private int numeroAgencia;
 
-    @Column(name = "conta")
-    private int conta;
+    @Column(name = "numero_conta")
+    private int numeroConta;
 
     @Column(name = "nome_correntista")
     private String nomeCorrentista;
@@ -45,6 +50,14 @@ public class ChavePixEntity extends BaseEntity {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public TipoPessoa getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(TipoPessoa tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
     }
 
     public TipoChave getTipoChave() {
@@ -71,20 +84,20 @@ public class ChavePixEntity extends BaseEntity {
         this.tipoConta = tipoConta;
     }
 
-    public int getAgencia() {
-        return agencia;
+    public int getNumeroAgencia() {
+        return numeroAgencia;
     }
 
-    public void setAgencia(int agencia) {
-        this.agencia = agencia;
+    public void setNumeroAgencia(int numeroAgencia) {
+        this.numeroAgencia = numeroAgencia;
     }
 
-    public int getConta() {
-        return conta;
+    public int getNumeroConta() {
+        return numeroConta;
     }
 
-    public void setConta(int conta) {
-        this.conta = conta;
+    public void setNumeroConta(int numeroConta) {
+        this.numeroConta = numeroConta;
     }
 
     public String getNomeCorrentista() {

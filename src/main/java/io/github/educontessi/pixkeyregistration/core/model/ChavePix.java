@@ -14,6 +14,7 @@ public class ChavePix extends BaseModel {
     private TipoChave tipoChave;
 
     @NotBlank
+    @Size(min = 11, max = 77)
     private String valorChave;
 
     @NotNull
@@ -21,11 +22,11 @@ public class ChavePix extends BaseModel {
 
     @NotNull
     @Digits(integer = 4, fraction = 0)
-    private Integer agencia;
+    private Integer numeroAgencia;
 
     @NotNull
     @Digits(integer = 8, fraction = 0)
-    private Integer conta;
+    private Integer numeroConta;
 
     @NotBlank
     @Size(min = 3, max = 30)
@@ -66,20 +67,20 @@ public class ChavePix extends BaseModel {
         this.tipoConta = tipoConta;
     }
 
-    public Integer getAgencia() {
-        return agencia;
+    public Integer getNumeroAgencia() {
+        return numeroAgencia;
     }
 
-    public void setAgencia(Integer agencia) {
-        this.agencia = agencia;
+    public void setNumeroAgencia(Integer numeroAgencia) {
+        this.numeroAgencia = numeroAgencia;
     }
 
-    public Integer getConta() {
-        return conta;
+    public Integer getNumeroConta() {
+        return numeroConta;
     }
 
-    public void setConta(Integer conta) {
-        this.conta = conta;
+    public void setNumeroConta(Integer numeroConta) {
+        this.numeroConta = numeroConta;
     }
 
     public String getNomeCorrentista() {
