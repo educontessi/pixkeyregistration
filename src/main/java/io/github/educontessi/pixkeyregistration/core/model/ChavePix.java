@@ -2,13 +2,21 @@ package io.github.educontessi.pixkeyregistration.core.model;
 
 import io.github.educontessi.pixkeyregistration.core.enums.TipoChave;
 import io.github.educontessi.pixkeyregistration.core.enums.TipoConta;
+import io.github.educontessi.pixkeyregistration.core.enums.TipoPessoa;
 
 import javax.validation.constraints.*;
 import java.util.UUID;
 
 public class ChavePix extends BaseModel {
 
+    public ChavePix(TipoPessoa tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
+    }
+
     private UUID id;
+
+    @NotNull
+    private TipoPessoa tipoPessoa;
 
     @NotNull
     private TipoChave tipoChave;
@@ -41,6 +49,14 @@ public class ChavePix extends BaseModel {
 
     public void setId(UUID id) {
         this.id = id;
+    }
+
+    public TipoPessoa getTipoPessoa() {
+        return tipoPessoa;
+    }
+
+    public void setTipoPessoa(TipoPessoa tipoPessoa) {
+        this.tipoPessoa = tipoPessoa;
     }
 
     public TipoChave getTipoChave() {

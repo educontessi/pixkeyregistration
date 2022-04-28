@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CountryRepository extends JpaRepository<ChavePixEntity, Long> {
 
+    boolean existsByValorChave(String valorChave);
+
 }

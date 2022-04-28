@@ -15,7 +15,7 @@ public class ChavePixOutDataConverter implements DataConverter<ChavePixEntity, C
 
     @Override
     public ChavePix entityToModel(ChavePixEntity entity, String expand) {
-        ChavePix model = new ChavePix();
+        ChavePix model = new ChavePix(entity.getTipoPessoa());
         BeanUtils.copyProperties(entity, model);
         return model;
     }

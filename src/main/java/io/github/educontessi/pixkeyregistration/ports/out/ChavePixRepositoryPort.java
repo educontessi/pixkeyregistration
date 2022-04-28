@@ -19,4 +19,6 @@ public interface ChavePixRepositoryPort {
 
     void delete(ChavePix saved) throws EntityNotFoundException, EntityInUseException;
 
+    boolean existeChavePix(String valorChavePix);
+
 }

@@ -56,6 +56,11 @@ public class ChavePixService implements ChavePixRepositoryPort {
         paranoidDelete(entity);
     }
 
+    @Override
+    public boolean existeChavePix(String valorChavePix) {
+        return repository.existsByValorChave(valorChavePix);
+    }
+
     protected void paranoidDelete(ChavePixEntity saved) {
         saved.setDataExclusao(LocalDateTime.now());
         repository.saveAndFlush(saved);
