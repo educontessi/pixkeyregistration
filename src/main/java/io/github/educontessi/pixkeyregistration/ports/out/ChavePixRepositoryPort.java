@@ -9,11 +9,11 @@ import java.util.Optional;
 
 public interface ChavePixRepositoryPort {
 
+    ChavePix save(ChavePix model);
+
     List<ChavePix> findAll();
 
     Optional<ChavePix> findById(Long id);
-
-    ChavePix save(ChavePix model);
 
     ChavePix update(ChavePix model, ChavePix saved);
 
