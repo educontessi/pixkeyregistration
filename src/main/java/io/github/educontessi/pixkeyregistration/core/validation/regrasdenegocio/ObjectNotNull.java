@@ -1,7 +1,7 @@
-package io.github.educontessi.pixkeyregistration.core.usecase.validation.regrasdenegocio;
+package io.github.educontessi.pixkeyregistration.core.validation.regrasdenegocio;
 
 import io.github.educontessi.pixkeyregistration.core.exception.NegocioException;
-import io.github.educontessi.pixkeyregistration.core.usecase.validation.Validator;
+import io.github.educontessi.pixkeyregistration.core.validation.Validator;
 
 public class ObjectNotNull implements Validator {
 

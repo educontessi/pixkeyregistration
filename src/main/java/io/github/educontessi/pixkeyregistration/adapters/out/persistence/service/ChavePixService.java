@@ -23,6 +23,14 @@ public class ChavePixService implements ChavePixRepositoryPort {
     }
 
     @Override
+    public ChavePix save(ChavePix model) {
+        ChavePixEntity entity = new ChavePixEntity();
+        mapper.modelToEntity(entity, model);
+        repository.save(entity);
+        return mapper.entityToModel(entity);
+    }
+
+    @Override
     public List<ChavePix> findAll() {
         List<ChavePixEntity> list = repository.findAll();
         return list.stream().map(mapper::entityToModel).toList();
@@ -32,14 +40,6 @@ public class ChavePixService implements ChavePixRepositoryPort {
     public Optional<ChavePix> findById(Long id) {
         Optional<ChavePixEntity> optionalSaved = repository.findById(id);
         return Optional.of(mapper.entityToModel(optionalSaved.orElse(null)));
-    }
-
-    @Override
-    public ChavePix save(ChavePix model) {
-        ChavePixEntity entity = new ChavePixEntity();
-        mapper.modelToEntity(entity, model);
-        repository.save(entity);
-        return mapper.entityToModel(entity);
     }
 
     @Override

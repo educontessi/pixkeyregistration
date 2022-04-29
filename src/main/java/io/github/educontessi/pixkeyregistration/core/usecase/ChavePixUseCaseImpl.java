@@ -2,7 +2,7 @@ package io.github.educontessi.pixkeyregistration.core.usecase;
 
 import io.github.educontessi.pixkeyregistration.core.exception.EntityNotFoundException;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
-import io.github.educontessi.pixkeyregistration.core.usecase.validation.Validator;
+import io.github.educontessi.pixkeyregistration.core.validation.Validator;
 import io.github.educontessi.pixkeyregistration.ports.in.ChavePixUseCasePort;
 import io.github.educontessi.pixkeyregistration.ports.out.ChavePixRepositoryPort;
 
@@ -18,6 +18,12 @@ public class ChavePixUseCaseImpl implements ChavePixUseCasePort {
     }
 
     @Override
+    public ChavePix save(ChavePix model, List<Validator> validators) {
+        validators.forEach(Validator::validate);
+        return repository.save(model);
+    }
+
+    @Override
     public List<ChavePix> findAll() {
         return repository.findAll();
     }
@@ -26,12 +32,6 @@ public class ChavePixUseCaseImpl implements ChavePixUseCasePort {
     public ChavePix findById(Long id) {
         Optional<ChavePix> optionalSaved = repository.findById(id);
         return optionalSaved.orElseThrow(() -> new EntityNotFoundException(id));
-    }
-
-    @Override
-    public ChavePix save(ChavePix model, List<Validator> validators) {
-        validators.forEach(Validator::validate);
-        return repository.save(model);
     }
 
     @Override

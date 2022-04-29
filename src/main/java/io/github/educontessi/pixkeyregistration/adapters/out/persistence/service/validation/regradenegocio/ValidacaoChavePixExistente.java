@@ -1,8 +1,8 @@
-package io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.validation;
+package io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.validation.regradenegocio;
 
 import io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.ChavePixService;
 import io.github.educontessi.pixkeyregistration.core.exception.ValidacaoChavePixException;
-import io.github.educontessi.pixkeyregistration.core.usecase.validation.Validator;
+import io.github.educontessi.pixkeyregistration.core.validation.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

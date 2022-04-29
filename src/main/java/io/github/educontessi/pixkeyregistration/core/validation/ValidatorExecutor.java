@@ -1,4 +1,4 @@
-package io.github.educontessi.pixkeyregistration.core.usecase.validation;
+package io.github.educontessi.pixkeyregistration.core.validation;
 
 import java.util.ArrayList;
 import java.util.List;

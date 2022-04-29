@@ -1,7 +1,7 @@
-package io.github.educontessi.pixkeyregistration.core.usecase.validation.regrasdenegocio;
+package io.github.educontessi.pixkeyregistration.core.validation.regrasdenegocio;
 
 import io.github.educontessi.pixkeyregistration.core.exception.ValidacaoChavePixException;
-import io.github.educontessi.pixkeyregistration.core.usecase.validation.Validator;
+import io.github.educontessi.pixkeyregistration.core.validation.Validator;
 
 import java.util.InputMismatchException;
 

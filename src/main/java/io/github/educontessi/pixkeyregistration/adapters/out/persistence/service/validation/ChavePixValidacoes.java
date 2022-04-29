@@ -1,7 +1,10 @@
-package io.github.educontessi.pixkeyregistration.core.usecase.validation;
+package io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.validation;
 
+import io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.validation.regradenegocio.ValidacaoChavePixExistente;
+import io.github.educontessi.pixkeyregistration.adapters.out.spring.SpringContext;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
-import io.github.educontessi.pixkeyregistration.core.usecase.validation.regrasdenegocio.*;
+import io.github.educontessi.pixkeyregistration.core.validation.Validator;
+import io.github.educontessi.pixkeyregistration.core.validation.regrasdenegocio.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,8 +19,7 @@ public class ChavePixValidacoes {
         List<Validator> validators = new ArrayList<>();
 
         validators.add(new ObjectNotNull(chavePix));
-
-        // todo: adicionar validacao de chave existente para não deixar validando pela chave unica no banco
+        validators.add(getValidacaoChavePixExistente(chavePix));
 
         switch (chavePix.getTipoChave()) {
             case EMAIL -> validators.add(new ValidacaoChavePixTipoEmail(chavePix.getValorChave()));
@@ -33,4 +35,11 @@ public class ChavePixValidacoes {
     public static List<Validator> validationsOnDelete() {
         return new ArrayList<>();
     }
+
+    protected static ValidacaoChavePixExistente getValidacaoChavePixExistente(ChavePix chavePix) {
+        ValidacaoChavePixExistente validacaoChavePixExistente = SpringContext.getBean(ValidacaoChavePixExistente.class);
+        validacaoChavePixExistente.setValorChave(chavePix.getValorChave());
+        return validacaoChavePixExistente;
+    }
+
 }
