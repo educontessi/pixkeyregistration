@@ -20,4 +20,6 @@ public interface ChavePixRepositoryPort {
 
     boolean existeChavePix(String valorChavePix);
 
+    long countByNumeroAgenciaAndNumeroConta(Integer numeroAgencia, Integer numeroConta);
+
 }

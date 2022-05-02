@@ -1,25 +1,27 @@
-package io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.validation;
+package io.github.educontessi.pixkeyregistration.core.validation;
 
-import io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.validation.regradenegocio.ValidacaoChavePixExistente;
-import io.github.educontessi.pixkeyregistration.adapters.out.spring.SpringContext;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
-import io.github.educontessi.pixkeyregistration.core.validation.Validator;
 import io.github.educontessi.pixkeyregistration.core.validation.regrasdenegocio.*;
+import io.github.educontessi.pixkeyregistration.ports.out.ValidacoesPort;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChavePixValidacoes {
 
-    private ChavePixValidacoes() {
-        throw new IllegalStateException("Utility class");
+    private final ValidacoesPort validacoesPort;
+
+    public ChavePixValidacoes(ValidacoesPort validacoesPort) {
+        this.validacoesPort = validacoesPort;
     }
 
-    public static List<Validator> validationsOnSave(ChavePix chavePix) {
+    public List<Validator> validationsOnSave(ChavePix chavePix) {
         List<Validator> validators = new ArrayList<>();
 
         validators.add(new ObjectNotNull(chavePix));
-        validators.add(getValidacaoChavePixExistente(chavePix.getValorChave()));
+
+        validators.add(validacoesPort.validarChaveExistente(chavePix));
+        validators.add(validacoesPort.validarQuantidadeChaves(chavePix));
 
         switch (chavePix.getTipoChave()) {
             case EMAIL -> validators.add(new ValidacaoChavePixTipoEmail(chavePix.getValorChave()));
@@ -34,12 +36,6 @@ public class ChavePixValidacoes {
 
     public static List<Validator> validationsOnDelete() {
         return new ArrayList<>();
-    }
-
-    protected static ValidacaoChavePixExistente getValidacaoChavePixExistente(String valorChave) {
-        ValidacaoChavePixExistente validacaoChavePixExistente = SpringContext.getBean(ValidacaoChavePixExistente.class);
-        validacaoChavePixExistente.setValorChave(valorChave);
-        return validacaoChavePixExistente;
     }
 
 }

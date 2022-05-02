@@ -55,6 +55,11 @@ public class ChavePixService implements ChavePixRepositoryPort {
         return repository.existsByValorChave(valorChavePix);
     }
 
+    @Override
+    public long countByNumeroAgenciaAndNumeroConta(Integer numeroAgencia, Integer numeroConta) {
+        return repository.countByNumeroAgenciaAndNumeroContaAndDataExclusaoIsNull(numeroAgencia, numeroConta);
+    }
+
     protected void paranoidDelete(ChavePixEntity saved) {
         saved.setDataExclusao(LocalDateTime.now());
         repository.saveAndFlush(saved);

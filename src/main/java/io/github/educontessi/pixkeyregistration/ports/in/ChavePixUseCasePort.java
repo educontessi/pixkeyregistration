@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface ChavePixUseCasePort {
 
-    ChavePix save(ChavePix model, List<Validator> validators);
+    ChavePix save(ChavePix model);
 
     ChavePix path(UUID id, String valorChave);
 

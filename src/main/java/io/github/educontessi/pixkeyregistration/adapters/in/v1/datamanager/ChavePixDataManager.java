@@ -4,7 +4,6 @@ import io.github.educontessi.pixkeyregistration.adapters.in.v1.dataconverter.Cha
 import io.github.educontessi.pixkeyregistration.adapters.in.v1.dto.ChavePixDto;
 import io.github.educontessi.pixkeyregistration.core.enums.TipoPessoa;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
-import io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.validation.ChavePixValidacoes;
 import io.github.educontessi.pixkeyregistration.ports.in.ChavePixUseCasePort;
 import org.springframework.stereotype.Component;
 
@@ -24,14 +23,14 @@ public class ChavePixDataManager {
         TipoPessoa tipoPessoa = TipoPessoa.valueOfPathVariable(tipoPessoaPathVariable);
         var model = new ChavePix(tipoPessoa);
         dataConverter.copyToModel(model, dto);
-        model = chavePixUseCasePort.save(model, ChavePixValidacoes.validationsOnSave(model));
+        model = chavePixUseCasePort.save(model);
         return dataConverter.convertToDto(dto, model);
     }
 
     public ChavePixDto path(String valorChave, ChavePixDto dto, String tipoPessoaPathVariable) {
         TipoPessoa tipoPessoa = TipoPessoa.valueOfPathVariable(tipoPessoaPathVariable);
         var model = chavePixUseCasePort.path(dto.getId(), valorChave);
-        model = chavePixUseCasePort.save(model, ChavePixValidacoes.validationsOnSave(model));
+        model = chavePixUseCasePort.save(model);
         return dataConverter.convertToDto(dto, model);
     }
 

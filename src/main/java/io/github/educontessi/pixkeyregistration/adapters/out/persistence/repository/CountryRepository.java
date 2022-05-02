@@ -11,4 +11,6 @@ public interface CountryRepository extends JpaRepository<ChavePixEntity, UUID> {
 
     boolean existsByValorChave(String valorChave);
 
+    long countByNumeroAgenciaAndNumeroContaAndDataExclusaoIsNull(Integer numeroAgencia, Integer numeroConta);
+
 }

@@ -1,4 +1,4 @@
-package io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.validation.regradenegocio;
+package io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.validation;
 
 import io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.ChavePixService;
 import io.github.educontessi.pixkeyregistration.core.exception.ValidacaoChavePixException;
@@ -12,8 +12,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class ValidacaoChavePixExistente implements Validator {
 
-    @Autowired
-    private ChavePixService service;
+    private final ChavePixService service;
+
+    public ValidacaoChavePixExistente(ChavePixService service) {
+        this.service = service;
+    }
 
     private String valorChave;
 

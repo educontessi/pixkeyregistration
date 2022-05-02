@@ -4,6 +4,7 @@ import io.github.educontessi.pixkeyregistration.core.exception.EntityNotFoundExc
 import io.github.educontessi.pixkeyregistration.core.exception.NegocioException;
 import io.github.educontessi.pixkeyregistration.core.exception.ValidacaoChavePixException;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
+import io.github.educontessi.pixkeyregistration.core.validation.ChavePixValidacoes;
 import io.github.educontessi.pixkeyregistration.core.validation.Validator;
 import io.github.educontessi.pixkeyregistration.ports.in.ChavePixUseCasePort;
 import io.github.educontessi.pixkeyregistration.ports.out.ChavePixRepositoryPort;
@@ -15,14 +16,16 @@ import java.util.UUID;
 public class ChavePixUseCaseImpl implements ChavePixUseCasePort {
 
     private final ChavePixRepositoryPort repository;
+    private final ChavePixValidacoes chavePixValidacoes;
 
-    public ChavePixUseCaseImpl(ChavePixRepositoryPort repository) {
+    public ChavePixUseCaseImpl(ChavePixRepositoryPort repository, ChavePixValidacoes chavePixValidacoes) {
         this.repository = repository;
+        this.chavePixValidacoes = chavePixValidacoes;
     }
 
     @Override
-    public ChavePix save(ChavePix model, List<Validator> validators) {
-        validators.forEach(Validator::validate);
+    public ChavePix save(ChavePix model) {
+        chavePixValidacoes.validationsOnSave(model).forEach(Validator::validate);
         return repository.save(model);
     }
 
