@@ -32,9 +32,7 @@ public class ChavePixUseCaseImpl implements ChavePixUseCasePort {
     @Override
     public ChavePix path(UUID id, String valorChave) {
         ChavePix saved = findById(id);
-        if(saved.estaExcluido()){
-            throw new NegocioException("A chave está inativada");
-        }
+        chavePixValidacoes.validationsOnPatch(saved).forEach(Validator::validate);
 
         saved.setValorChave(valorChave);
         return saved;
