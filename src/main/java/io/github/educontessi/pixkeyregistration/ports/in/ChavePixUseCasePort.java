@@ -4,16 +4,17 @@ import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
 import io.github.educontessi.pixkeyregistration.core.validation.Validator;
 
 import java.util.List;
+import java.util.UUID;
 
 public interface ChavePixUseCasePort {
 
     ChavePix save(ChavePix model, List<Validator> validators);
 
+    ChavePix path(UUID id, String valorChave);
+
+    ChavePix findById(UUID id);
+
     List<ChavePix> findAll();
 
-    ChavePix findById(Long id);
-
-    ChavePix update(Long id, ChavePix model, List<Validator> validators);
-
-    void delete(Long id, List<Validator> validators);
+    void delete(UUID id, List<Validator> validators);
 }

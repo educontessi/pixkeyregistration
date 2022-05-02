@@ -23,4 +23,11 @@ public class ChavePixController {
         return ResponseEntity.ok(dataManager.save(dto, tipoPessoa));
     }
 
+    @PatchMapping("/alterar-chave/{valorChave}")
+    public ResponseEntity<ChavePixDto> path(@PathVariable String tipoPessoa,
+                                            @PathVariable String valorChave,
+                                            @RequestBody ChavePixDto dto) {
+        return ResponseEntity.ok(dataManager.path(valorChave, dto, tipoPessoa));
+    }
+
 }

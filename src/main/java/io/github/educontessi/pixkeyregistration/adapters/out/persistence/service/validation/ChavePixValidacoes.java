@@ -19,7 +19,7 @@ public class ChavePixValidacoes {
         List<Validator> validators = new ArrayList<>();
 
         validators.add(new ObjectNotNull(chavePix));
-        validators.add(getValidacaoChavePixExistente(chavePix));
+        validators.add(getValidacaoChavePixExistente(chavePix.getValorChave()));
 
         switch (chavePix.getTipoChave()) {
             case EMAIL -> validators.add(new ValidacaoChavePixTipoEmail(chavePix.getValorChave()));
@@ -36,9 +36,9 @@ public class ChavePixValidacoes {
         return new ArrayList<>();
     }
 
-    protected static ValidacaoChavePixExistente getValidacaoChavePixExistente(ChavePix chavePix) {
+    protected static ValidacaoChavePixExistente getValidacaoChavePixExistente(String valorChave) {
         ValidacaoChavePixExistente validacaoChavePixExistente = SpringContext.getBean(ValidacaoChavePixExistente.class);
-        validacaoChavePixExistente.setValorChave(chavePix.getValorChave());
+        validacaoChavePixExistente.setValorChave(valorChave);
         return validacaoChavePixExistente;
     }
 

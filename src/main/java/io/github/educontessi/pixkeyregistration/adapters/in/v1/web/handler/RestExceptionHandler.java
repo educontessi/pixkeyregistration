@@ -35,7 +35,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @Override
     protected ResponseEntity<Object> handleHttpMediaTypeNotSupported(HttpMediaTypeNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        HttpStatus statusResponse = HttpStatus.UNSUPPORTED_MEDIA_TYPE;
+        HttpStatus statusResponse = HttpStatus.UNPROCESSABLE_ENTITY;
         ErrorType errorType = ErrorType.INVALID_REQUEST;
         String userMessage = "Content-Type was not informed";
 
@@ -46,7 +46,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleHttpMessageNotReadable(HttpMessageNotReadableException ex,
                                                                   HttpHeaders headers, HttpStatus status, WebRequest request) {
-        HttpStatus statusResponse = HttpStatus.BAD_REQUEST;
+        HttpStatus statusResponse = HttpStatus.UNPROCESSABLE_ENTITY;
         ErrorType errorType = ErrorType.INCOMPREHENSIVE_MESSAGE;
         String userMessage = "The request body is invalid. Check syntax error.";
 
@@ -57,7 +57,7 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
                                                                   HttpHeaders headers, HttpStatus status, WebRequest request) { // Exception usada quando não utiliza dto
-        HttpStatus statusResponse = HttpStatus.BAD_REQUEST;
+        HttpStatus statusResponse = HttpStatus.UNPROCESSABLE_ENTITY;
         ErrorType errorType = ErrorType.INVALID_DATA;
         String userMessage = "One or more fields are invalid. Please fill in correctly and try again.";
 

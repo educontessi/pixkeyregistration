@@ -31,4 +31,8 @@ public abstract class BaseModel {
     public void setDataExclusao(LocalDateTime dataExclusao) {
         this.dataExclusao = dataExclusao;
     }
+
+    public boolean estaExcluido() {
+        return dataExclusao != null;
+    }
 }

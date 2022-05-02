@@ -6,6 +6,7 @@ import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface ChavePixRepositoryPort {
 
@@ -13,9 +14,7 @@ public interface ChavePixRepositoryPort {
 
     List<ChavePix> findAll();
 
-    Optional<ChavePix> findById(Long id);
-
-    ChavePix update(ChavePix model, ChavePix saved);
+    Optional<ChavePix> findById(UUID id);
 
     void delete(ChavePix saved) throws EntityNotFoundException, EntityInUseException;
 

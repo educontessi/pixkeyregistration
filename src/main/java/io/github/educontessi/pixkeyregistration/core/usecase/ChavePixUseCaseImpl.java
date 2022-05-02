@@ -1,6 +1,8 @@
 package io.github.educontessi.pixkeyregistration.core.usecase;
 
 import io.github.educontessi.pixkeyregistration.core.exception.EntityNotFoundException;
+import io.github.educontessi.pixkeyregistration.core.exception.NegocioException;
+import io.github.educontessi.pixkeyregistration.core.exception.ValidacaoChavePixException;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
 import io.github.educontessi.pixkeyregistration.core.validation.Validator;
 import io.github.educontessi.pixkeyregistration.ports.in.ChavePixUseCasePort;
@@ -8,6 +10,7 @@ import io.github.educontessi.pixkeyregistration.ports.out.ChavePixRepositoryPort
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public class ChavePixUseCaseImpl implements ChavePixUseCasePort {
 
@@ -24,25 +27,29 @@ public class ChavePixUseCaseImpl implements ChavePixUseCasePort {
     }
 
     @Override
-    public List<ChavePix> findAll() {
-        return repository.findAll();
+    public ChavePix path(UUID id, String valorChave) {
+        ChavePix saved = findById(id);
+        if(saved.estaExcluido()){
+            throw new NegocioException("A chave está inativada");
+        }
+
+        saved.setValorChave(valorChave);
+        return saved;
     }
 
     @Override
-    public ChavePix findById(Long id) {
+    public ChavePix findById(UUID id) {
         Optional<ChavePix> optionalSaved = repository.findById(id);
         return optionalSaved.orElseThrow(() -> new EntityNotFoundException(id));
     }
 
     @Override
-    public ChavePix update(Long id, ChavePix model, List<Validator> validators) {
-        validators.forEach(Validator::validate);
-        ChavePix saved = findById(id);
-        return repository.update(model, saved);
+    public List<ChavePix> findAll() {
+        return repository.findAll();
     }
 
     @Override
-    public void delete(Long id, List<Validator> validators) {
+    public void delete(UUID id, List<Validator> validators) {
         validators.forEach(Validator::validate);
         ChavePix saved = findById(id);
         repository.delete(saved);

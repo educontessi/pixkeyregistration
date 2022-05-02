@@ -28,4 +28,12 @@ public class ChavePixDataManager {
         return dataConverter.convertToDto(dto, model);
     }
 
+    public ChavePixDto path(String valorChave, ChavePixDto dto, String tipoPessoaPathVariable) {
+        TipoPessoa tipoPessoa = TipoPessoa.valueOfPathVariable(tipoPessoaPathVariable);
+        var model = chavePixUseCasePort.path(dto.getId(), valorChave);
+        model = chavePixUseCasePort.save(model, ChavePixValidacoes.validationsOnSave(model));
+        return dataConverter.convertToDto(dto, model);
+    }
+
+
 }

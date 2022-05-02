@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ChavePixService implements ChavePixRepositoryPort {
@@ -37,16 +38,9 @@ public class ChavePixService implements ChavePixRepositoryPort {
     }
 
     @Override
-    public Optional<ChavePix> findById(Long id) {
+    public Optional<ChavePix> findById(UUID id) {
         Optional<ChavePixEntity> optionalSaved = repository.findById(id);
-        return Optional.of(mapper.entityToModel(optionalSaved.orElse(null)));
-    }
-
-    @Override
-    public ChavePix update(ChavePix model, ChavePix saved) {
-        //BeanUtils.copyProperties(model, saved, model.getIgnoreProperties());
-        //return save(saved);
-        return null; // todo: ajustar aqui
+        return optionalSaved.map(mapper::entityToModel);
     }
 
     @Override
