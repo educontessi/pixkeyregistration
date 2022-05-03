@@ -42,4 +42,10 @@ public class ChavePixDataManager {
         return dataConverter.convertToDto(model);
     }
 
+    public ChavePixDto findById(UUID id, String tipoPessoaPathVariable) {
+        TipoPessoa tipoPessoa = TipoPessoa.valueOfPathVariable(tipoPessoaPathVariable);
+        var model = chavePixUseCasePort.findById(id);
+        return dataConverter.convertToDto(model);
+    }
+
 }

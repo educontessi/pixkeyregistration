@@ -16,6 +16,7 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.time.OffsetDateTime;
@@ -76,30 +77,10 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, responseError, new HttpHeaders(), statusResponse, request);
     }
 
-    @ExceptionHandler({EntityInUseException.class})
-    public ResponseEntity<Object> handleEntityInUseException(EntityInUseException ex, WebRequest request) {
-        HttpStatus statusResponse = HttpStatus.CONFLICT;
-        ErrorType errorType = ErrorType.ENTITY_IN_USE;
-        String userMessage = ex.getMessage();
-
-        ResponseError responseError = getRequestError(ex, statusResponse, errorType, userMessage);
-        return handleExceptionInternal(ex, responseError, new HttpHeaders(), statusResponse, request);
-    }
-
     @ExceptionHandler({EntityNotFoundException.class})
     public ResponseEntity<Object> handleEntityNotFoundException(EntityNotFoundException ex, WebRequest request) {
         HttpStatus statusResponse = HttpStatus.NOT_FOUND;
         ErrorType errorType = ErrorType.RESOURCE_NOT_FOUND;
-        String userMessage = ex.getMessage();
-
-        ResponseError responseError = getRequestError(ex, statusResponse, errorType, userMessage);
-        return handleExceptionInternal(ex, responseError, new HttpHeaders(), statusResponse, request);
-    }
-
-    @ExceptionHandler({InvalidUuidException.class})
-    public ResponseEntity<Object> handleInvalidUuidException(InvalidUuidException ex, WebRequest request) {
-        HttpStatus statusResponse = HttpStatus.UNPROCESSABLE_ENTITY;
-        ErrorType errorType = ErrorType.INVALID_DATA;
         String userMessage = ex.getMessage();
 
         ResponseError responseError = getRequestError(ex, statusResponse, errorType, userMessage);
@@ -118,6 +99,16 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({ValidacaoChavePixException.class})
     public ResponseEntity<Object> handleValidacaoChavePixException(ValidacaoChavePixException ex, WebRequest request) {
+        HttpStatus statusResponse = HttpStatus.UNPROCESSABLE_ENTITY;
+        ErrorType errorType = ErrorType.INVALID_DATA;
+        String userMessage = ex.getMessage();
+
+        ResponseError responseError = getRequestError(ex, statusResponse, errorType, userMessage);
+        return handleExceptionInternal(ex, responseError, new HttpHeaders(), statusResponse, request);
+    }
+
+    @ExceptionHandler({MethodArgumentTypeMismatchException.class})
+    public ResponseEntity<Object> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex, WebRequest request) {
         HttpStatus statusResponse = HttpStatus.UNPROCESSABLE_ENTITY;
         ErrorType errorType = ErrorType.INVALID_DATA;
         String userMessage = ex.getMessage();

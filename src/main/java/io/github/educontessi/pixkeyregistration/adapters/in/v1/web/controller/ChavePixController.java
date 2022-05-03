@@ -38,4 +38,9 @@ public class ChavePixController {
         return ResponseEntity.ok(dataManager.delete(id, tipoPessoa));
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<ChavePixDto> findById(@PathVariable String tipoPessoa,
+                                            @PathVariable UUID id) {
+        return ResponseEntity.ok(dataManager.findById(id, tipoPessoa));
+    }
 }
