@@ -4,35 +4,35 @@ import java.time.LocalDateTime;
 
 public abstract class BaseModel {
 
-    protected LocalDateTime dataCriacao;
-    protected LocalDateTime dataAlteracao;
-    protected LocalDateTime dataExclusao;
+    protected LocalDateTime dataHoraInclusao;
+    protected LocalDateTime dataHoraAlteracao;
+    protected LocalDateTime dataHoraInativacao;
 
-    public LocalDateTime getDataCriacao() {
-        return dataCriacao;
+    public LocalDateTime getDataHoraInclusao() {
+        return dataHoraInclusao;
     }
 
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    public void setDataHoraInclusao(LocalDateTime dataHoraInclusao) {
+        this.dataHoraInclusao = dataHoraInclusao;
     }
 
-    public LocalDateTime getDataAlteracao() {
-        return dataAlteracao;
+    public LocalDateTime getDataHoraAlteracao() {
+        return dataHoraAlteracao;
     }
 
-    public void setDataAlteracao(LocalDateTime dataAlteracao) {
-        this.dataAlteracao = dataAlteracao;
+    public void setDataHoraAlteracao(LocalDateTime dataHoraAlteracao) {
+        this.dataHoraAlteracao = dataHoraAlteracao;
     }
 
-    public LocalDateTime getDataExclusao() {
-        return dataExclusao;
+    public LocalDateTime getDataHoraInativacao() {
+        return dataHoraInativacao;
     }
 
-    public void setDataExclusao(LocalDateTime dataExclusao) {
-        this.dataExclusao = dataExclusao;
+    public void setDataHoraInativacao(LocalDateTime dataHoraInativacao) {
+        this.dataHoraInativacao = dataHoraInativacao;
     }
 
     public boolean estaExcluido() {
-        return dataExclusao != null;
+        return this.dataHoraInativacao != null;
     }
 }

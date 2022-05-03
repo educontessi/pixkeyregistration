@@ -11,36 +11,36 @@ import java.time.LocalDateTime;
 @JsonInclude(Include.NON_NULL)
 public abstract class BaseEntity {
 
-    @Column(name = "data_criacao", insertable = false, updatable = false)
-    protected LocalDateTime dataCriacao;
+    @Column(name = "data_hora_inclusao", insertable = false, updatable = false)
+    protected LocalDateTime dataHoraInclusao;
 
-    @Column(name = "data_alteracao", insertable = false, updatable = false)
-    protected LocalDateTime dataAlteracao;
+    @Column(name = "data_hora_alteracao", insertable = false, updatable = false)
+    protected LocalDateTime dataHoraAlteracao;
 
-    @Column(name = "data_exclusao", insertable = false)
-    protected LocalDateTime dataExclusao;
+    @Column(name = "data_hora_inativacao", insertable = false)
+    protected LocalDateTime dataHoraInativacao;
 
-    public LocalDateTime getDataCriacao() {
-        return dataCriacao;
+    public LocalDateTime getDataHoraInclusao() {
+        return dataHoraInclusao;
     }
 
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    public void setDataHoraInclusao(LocalDateTime dataHoraInclusao) {
+        this.dataHoraInclusao = dataHoraInclusao;
     }
 
-    public LocalDateTime getDataAlteracao() {
-        return dataAlteracao;
+    public LocalDateTime getDataHoraAlteracao() {
+        return dataHoraAlteracao;
     }
 
-    public void setDataAlteracao(LocalDateTime dataAlteracao) {
-        this.dataAlteracao = dataAlteracao;
+    public void setDataHoraAlteracao(LocalDateTime dataHoraAlteracao) {
+        this.dataHoraAlteracao = dataHoraAlteracao;
     }
 
-    public LocalDateTime getDataExclusao() {
-        return dataExclusao;
+    public LocalDateTime getDataHoraInativacao() {
+        return dataHoraInativacao;
     }
 
-    public void setDataExclusao(LocalDateTime dataExclusao) {
-        this.dataExclusao = dataExclusao;
+    public void setDataHoraInativacao(LocalDateTime dataHoraInativacao) {
+        this.dataHoraInativacao = dataHoraInativacao;
     }
 }

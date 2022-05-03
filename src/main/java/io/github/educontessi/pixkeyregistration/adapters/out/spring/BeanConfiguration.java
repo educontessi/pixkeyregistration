@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 public class BeanConfiguration {
 
     @Bean
-    ChavePixUseCaseImpl countryUseCaseImpl(ChavePixService service) {
+    ChavePixUseCaseImpl chavePixUseCaseImpl(ChavePixService service) {
         return new ChavePixUseCaseImpl(service, new ChavePixValidacoes(new ValidacoesPortImpl()));
     }
 }

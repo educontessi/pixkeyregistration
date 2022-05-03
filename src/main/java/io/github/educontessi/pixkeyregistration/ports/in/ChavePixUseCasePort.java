@@ -14,7 +14,7 @@ public interface ChavePixUseCasePort {
 
     ChavePix findById(UUID id);
 
-    List<ChavePix> findAll();
+    ChavePix delete(UUID id);
 
-    void delete(UUID id, List<Validator> validators);
+    List<ChavePix> findAll();
 }

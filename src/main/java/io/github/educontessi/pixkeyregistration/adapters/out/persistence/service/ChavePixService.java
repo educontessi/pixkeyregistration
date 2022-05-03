@@ -2,7 +2,7 @@ package io.github.educontessi.pixkeyregistration.adapters.out.persistence.servic
 
 import io.github.educontessi.pixkeyregistration.adapters.out.persistence.dataconverter.ChavePixOutDataConverter;
 import io.github.educontessi.pixkeyregistration.adapters.out.persistence.entity.ChavePixEntity;
-import io.github.educontessi.pixkeyregistration.adapters.out.persistence.repository.CountryRepository;
+import io.github.educontessi.pixkeyregistration.adapters.out.persistence.repository.ChavePixRepository;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
 import io.github.educontessi.pixkeyregistration.ports.out.ChavePixRepositoryPort;
 import org.springframework.stereotype.Service;
@@ -15,10 +15,10 @@ import java.util.UUID;
 @Service
 public class ChavePixService implements ChavePixRepositoryPort {
 
-    private final CountryRepository repository;
+    private final ChavePixRepository repository;
     private final ChavePixOutDataConverter mapper;
 
-    public ChavePixService(CountryRepository repository, ChavePixOutDataConverter mapper) {
+    public ChavePixService(ChavePixRepository repository, ChavePixOutDataConverter mapper) {
         this.repository = repository;
         this.mapper = mapper;
     }
@@ -32,22 +32,23 @@ public class ChavePixService implements ChavePixRepositoryPort {
     }
 
     @Override
-    public List<ChavePix> findAll() {
-        List<ChavePixEntity> list = repository.findAll();
-        return list.stream().map(mapper::entityToModel).toList();
-    }
-
-    @Override
     public Optional<ChavePix> findById(UUID id) {
         Optional<ChavePixEntity> optionalSaved = repository.findById(id);
         return optionalSaved.map(mapper::entityToModel);
     }
 
     @Override
-    public void delete(ChavePix saved) {
+    public ChavePix delete(ChavePix saved) {
         ChavePixEntity entity = new ChavePixEntity();
         mapper.modelToEntity(entity, saved);
-        paranoidDelete(entity);
+        entity = paranoidDelete(entity);
+        return mapper.entityToModel(entity);
+    }
+
+    @Override
+    public List<ChavePix> findAll() {
+        List<ChavePixEntity> list = repository.findAll();
+        return list.stream().map(mapper::entityToModel).toList();
     }
 
     @Override
@@ -57,12 +58,12 @@ public class ChavePixService implements ChavePixRepositoryPort {
 
     @Override
     public long countByNumeroAgenciaAndNumeroConta(Integer numeroAgencia, Integer numeroConta) {
-        return repository.countByNumeroAgenciaAndNumeroContaAndDataExclusaoIsNull(numeroAgencia, numeroConta);
+        return repository.countByNumeroAgenciaAndNumeroContaAndDataHoraInativacaoIsNull(numeroAgencia, numeroConta);
     }
 
-    protected void paranoidDelete(ChavePixEntity saved) {
-        saved.setDataExclusao(LocalDateTime.now());
-        repository.saveAndFlush(saved);
+    protected ChavePixEntity paranoidDelete(ChavePixEntity saved) {
+        saved.setDataHoraInativacao(LocalDateTime.now());
+        return repository.saveAndFlush(saved);
     }
 
 }

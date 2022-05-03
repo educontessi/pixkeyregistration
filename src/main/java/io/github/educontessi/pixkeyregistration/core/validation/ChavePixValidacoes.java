@@ -39,8 +39,10 @@ public class ChavePixValidacoes {
         return validators;
     }
 
-    public static List<Validator> validationsOnDelete() {
-        return new ArrayList<>();
+    public List<Validator> validationsOnDelete(ChavePix chavePix) {
+        List<Validator> validators = new ArrayList<>();
+        validators.add(new ValidacaoChavePixInativada(chavePix));
+        return validators;
     }
 
 }

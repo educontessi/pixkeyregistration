@@ -7,10 +7,10 @@ import org.springframework.stereotype.Repository;
 import java.util.UUID;
 
 @Repository
-public interface CountryRepository extends JpaRepository<ChavePixEntity, UUID> {
+public interface ChavePixRepository extends JpaRepository<ChavePixEntity, UUID> {
 
     boolean existsByValorChave(String valorChave);
 
-    long countByNumeroAgenciaAndNumeroContaAndDataExclusaoIsNull(Integer numeroAgencia, Integer numeroConta);
+    long countByNumeroAgenciaAndNumeroContaAndDataHoraInativacaoIsNull(Integer numeroAgencia, Integer numeroConta);
 
 }

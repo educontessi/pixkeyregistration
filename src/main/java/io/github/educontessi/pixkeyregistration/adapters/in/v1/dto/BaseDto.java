@@ -16,39 +16,26 @@ public abstract class BaseDto {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
-    protected LocalDateTime dataCriacao;
+    protected LocalDateTime dataHoraInclusao;
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @JsonDeserialize(using = LocalDateTimeDeserializer.class)
     @JsonSerialize(using = LocalDateTimeSerializer.class)
-    protected LocalDateTime dataAlteracao;
+    protected LocalDateTime dataHoraInativacao;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    @JsonDeserialize(using = LocalDateTimeDeserializer.class)
-    @JsonSerialize(using = LocalDateTimeSerializer.class)
-    protected LocalDateTime dataExclusao;
-
-    public LocalDateTime getDataCriacao() {
-        return dataCriacao;
+    public LocalDateTime getDataHoraInclusao() {
+        return dataHoraInclusao;
     }
 
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
+    public void setDataHoraInclusao(LocalDateTime dataHoraInclusao) {
+        this.dataHoraInclusao = dataHoraInclusao;
     }
 
-    public LocalDateTime getDataAlteracao() {
-        return dataAlteracao;
+    public LocalDateTime getDataHoraInativacao() {
+        return dataHoraInativacao;
     }
 
-    public void setDataAlteracao(LocalDateTime dataAlteracao) {
-        this.dataAlteracao = dataAlteracao;
-    }
-
-    public LocalDateTime getDataExclusao() {
-        return dataExclusao;
-    }
-
-    public void setDataExclusao(LocalDateTime dataExclusao) {
-        this.dataExclusao = dataExclusao;
+    public void setDataHoraInativacao(LocalDateTime dataHoraInativacao) {
+        this.dataHoraInativacao = dataHoraInativacao;
     }
 }

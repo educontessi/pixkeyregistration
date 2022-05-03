@@ -20,4 +20,8 @@ public class ChavePixInDataConverter extends DataConverter<ChavePix, ChavePixDto
         return dto;
     }
 
+    public ChavePixDto convertToDto(ChavePix model) {
+        return convertToDto(new ChavePixDto(), model);
+    }
+
 }

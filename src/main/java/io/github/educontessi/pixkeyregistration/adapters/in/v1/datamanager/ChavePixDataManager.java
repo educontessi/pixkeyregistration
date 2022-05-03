@@ -7,6 +7,8 @@ import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
 import io.github.educontessi.pixkeyregistration.ports.in.ChavePixUseCasePort;
 import org.springframework.stereotype.Component;
 
+import java.util.UUID;
+
 @Component
 public class ChavePixDataManager {
 
@@ -34,5 +36,10 @@ public class ChavePixDataManager {
         return dataConverter.convertToDto(dto, model);
     }
 
+    public ChavePixDto delete(UUID id, String tipoPessoaPathVariable) {
+        TipoPessoa tipoPessoa = TipoPessoa.valueOfPathVariable(tipoPessoaPathVariable);
+        var model = chavePixUseCasePort.delete(id);
+        return dataConverter.convertToDto(model);
+    }
 
 }

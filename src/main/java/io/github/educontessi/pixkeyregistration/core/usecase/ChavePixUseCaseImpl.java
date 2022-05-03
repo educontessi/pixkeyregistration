@@ -1,8 +1,6 @@
 package io.github.educontessi.pixkeyregistration.core.usecase;
 
 import io.github.educontessi.pixkeyregistration.core.exception.EntityNotFoundException;
-import io.github.educontessi.pixkeyregistration.core.exception.NegocioException;
-import io.github.educontessi.pixkeyregistration.core.exception.ValidacaoChavePixException;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
 import io.github.educontessi.pixkeyregistration.core.validation.ChavePixValidacoes;
 import io.github.educontessi.pixkeyregistration.core.validation.Validator;
@@ -50,10 +48,10 @@ public class ChavePixUseCaseImpl implements ChavePixUseCasePort {
     }
 
     @Override
-    public void delete(UUID id, List<Validator> validators) {
-        validators.forEach(Validator::validate);
+    public ChavePix delete(UUID id) {
         ChavePix saved = findById(id);
-        repository.delete(saved);
+        chavePixValidacoes.validationsOnDelete(saved).forEach(Validator::validate);
+        return repository.delete(saved);
     }
 
 }
