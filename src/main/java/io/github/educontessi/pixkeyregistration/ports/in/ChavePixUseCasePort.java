@@ -1,7 +1,7 @@
 package io.github.educontessi.pixkeyregistration.ports.in;
 
+import io.github.educontessi.pixkeyregistration.core.filter.ChavePixFilter;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
-import io.github.educontessi.pixkeyregistration.core.validation.Validator;
 
 import java.util.List;
 import java.util.UUID;
@@ -16,5 +16,5 @@ public interface ChavePixUseCasePort {
 
     ChavePix delete(UUID id);
 
-    List<ChavePix> findAll();
+    List<ChavePix> search(ChavePixFilter filter);
 }

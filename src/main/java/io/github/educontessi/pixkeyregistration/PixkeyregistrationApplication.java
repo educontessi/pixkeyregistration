@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class PixkeyregistrationApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(PixkeyregistrationApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(PixkeyregistrationApplication.class, args);
+    }
 
 }

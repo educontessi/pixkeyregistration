@@ -2,9 +2,11 @@ package io.github.educontessi.pixkeyregistration.adapters.in.v1.web.controller;
 
 import io.github.educontessi.pixkeyregistration.adapters.in.v1.datamanager.ChavePixDataManager;
 import io.github.educontessi.pixkeyregistration.adapters.in.v1.dto.ChavePixDto;
+import io.github.educontessi.pixkeyregistration.core.filter.ChavePixFilter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -40,7 +42,13 @@ public class ChavePixController {
 
     @GetMapping("/{id}")
     public ResponseEntity<ChavePixDto> findById(@PathVariable String tipoPessoa,
-                                            @PathVariable UUID id) {
+                                                @PathVariable UUID id) {
         return ResponseEntity.ok(dataManager.findById(id, tipoPessoa));
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ChavePixDto>> search(@PathVariable String tipoPessoa,
+                                                    ChavePixFilter chavePixFilter) {
+        return ResponseEntity.ok(dataManager.search(chavePixFilter, tipoPessoa));
     }
 }

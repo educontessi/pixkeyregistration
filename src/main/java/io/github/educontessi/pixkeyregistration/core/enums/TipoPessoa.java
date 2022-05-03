@@ -19,8 +19,8 @@ public enum TipoPessoa {
     }
 
     public static TipoPessoa valueOfPathVariable(String pathVariable) {
-        for (TipoPessoa tipoPessoa : TipoPessoa.values()){
-            if (Objects.equals(pathVariable, tipoPessoa.getPathVariable())){
+        for (TipoPessoa tipoPessoa : TipoPessoa.values()) {
+            if (Objects.equals(pathVariable, tipoPessoa.getPathVariable())) {
                 return tipoPessoa;
             }
         }

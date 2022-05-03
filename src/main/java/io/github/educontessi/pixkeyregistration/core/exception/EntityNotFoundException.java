@@ -12,10 +12,6 @@ public class EntityNotFoundException extends RuntimeException {
         super(mensagem);
     }
 
-    public EntityNotFoundException(Long id) {
-        this(String.format("There is no record with code %d", id));
-    }
-
     public EntityNotFoundException(UUID id) {
         this(String.format("There is no record with code %s", id.toString()));
     }

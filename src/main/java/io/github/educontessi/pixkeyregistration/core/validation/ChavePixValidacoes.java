@@ -33,6 +33,7 @@ public class ChavePixValidacoes {
 
         return validators;
     }
+
     public List<Validator> validationsOnPatch(ChavePix chavePix) {
         List<Validator> validators = new ArrayList<>();
         validators.add(new ValidacaoChavePixInativada(chavePix));
@@ -40,6 +41,12 @@ public class ChavePixValidacoes {
     }
 
     public List<Validator> validationsOnDelete(ChavePix chavePix) {
+        List<Validator> validators = new ArrayList<>();
+        validators.add(new ValidacaoChavePixInativada(chavePix));
+        return validators;
+    }
+
+    public List<Validator> validationsOnGET(ChavePix chavePix) {
         List<Validator> validators = new ArrayList<>();
         validators.add(new ValidacaoChavePixInativada(chavePix));
         return validators;

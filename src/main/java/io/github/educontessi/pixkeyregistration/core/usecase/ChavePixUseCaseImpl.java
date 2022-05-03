@@ -1,6 +1,7 @@
 package io.github.educontessi.pixkeyregistration.core.usecase;
 
 import io.github.educontessi.pixkeyregistration.core.exception.EntityNotFoundException;
+import io.github.educontessi.pixkeyregistration.core.filter.ChavePixFilter;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
 import io.github.educontessi.pixkeyregistration.core.validation.ChavePixValidacoes;
 import io.github.educontessi.pixkeyregistration.core.validation.Validator;
@@ -39,12 +40,17 @@ public class ChavePixUseCaseImpl implements ChavePixUseCasePort {
     @Override
     public ChavePix findById(UUID id) {
         Optional<ChavePix> optionalSaved = repository.findById(id);
-        return optionalSaved.orElseThrow(() -> new EntityNotFoundException(id));
+        return optionalSaved.orElseThrow(() -> new EntityNotFoundException(id));  // todo: padronizar validacao
     }
 
     @Override
-    public List<ChavePix> findAll() {
-        return repository.findAll();
+    public List<ChavePix> search(ChavePixFilter filter) {
+        List<ChavePix> lista = repository.search(filter);
+        if (lista.isEmpty()) { // todo: padronizar validacao
+            throw new EntityNotFoundException("Não encontrado");
+        }
+
+        return lista;
     }
 
     @Override

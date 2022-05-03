@@ -3,7 +3,6 @@ package io.github.educontessi.pixkeyregistration.adapters.out.persistence.servic
 import io.github.educontessi.pixkeyregistration.adapters.out.persistence.service.ChavePixService;
 import io.github.educontessi.pixkeyregistration.core.exception.ValidacaoChavePixException;
 import io.github.educontessi.pixkeyregistration.core.validation.Validator;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**

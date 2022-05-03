@@ -3,6 +3,7 @@ package io.github.educontessi.pixkeyregistration.adapters.out.persistence.servic
 import io.github.educontessi.pixkeyregistration.adapters.out.persistence.dataconverter.ChavePixOutDataConverter;
 import io.github.educontessi.pixkeyregistration.adapters.out.persistence.entity.ChavePixEntity;
 import io.github.educontessi.pixkeyregistration.adapters.out.persistence.repository.ChavePixRepository;
+import io.github.educontessi.pixkeyregistration.core.filter.ChavePixFilter;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
 import io.github.educontessi.pixkeyregistration.ports.out.ChavePixRepositoryPort;
 import org.springframework.stereotype.Service;
@@ -46,8 +47,8 @@ public class ChavePixService implements ChavePixRepositoryPort {
     }
 
     @Override
-    public List<ChavePix> findAll() {
-        List<ChavePixEntity> list = repository.findAll();
+    public List<ChavePix> search(ChavePixFilter filter) {
+        List<ChavePixEntity> list = repository.search(filter);
         return list.stream().map(mapper::entityToModel).toList();
     }
 

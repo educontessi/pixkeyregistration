@@ -4,11 +4,14 @@ import io.github.educontessi.pixkeyregistration.adapters.in.v1.web.exception.Dto
 import io.github.educontessi.pixkeyregistration.adapters.in.v1.web.response.ErrorDetail;
 import io.github.educontessi.pixkeyregistration.adapters.in.v1.web.response.ErrorType;
 import io.github.educontessi.pixkeyregistration.adapters.in.v1.web.response.ResponseError;
-import io.github.educontessi.pixkeyregistration.core.exception.*;
+import io.github.educontessi.pixkeyregistration.core.exception.EntityNotFoundException;
+import io.github.educontessi.pixkeyregistration.core.exception.NegocioException;
+import io.github.educontessi.pixkeyregistration.core.exception.ValidacaoChavePixException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpMediaTypeNotSupportedException;
@@ -109,6 +112,16 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler({MethodArgumentTypeMismatchException.class})
     public ResponseEntity<Object> handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException ex, WebRequest request) {
+        HttpStatus statusResponse = HttpStatus.UNPROCESSABLE_ENTITY;
+        ErrorType errorType = ErrorType.INVALID_DATA;
+        String userMessage = ex.getMessage();
+
+        ResponseError responseError = getRequestError(ex, statusResponse, errorType, userMessage);
+        return handleExceptionInternal(ex, responseError, new HttpHeaders(), statusResponse, request);
+    }
+
+    @Override
+    protected ResponseEntity<Object> handleBindException(BindException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         HttpStatus statusResponse = HttpStatus.UNPROCESSABLE_ENTITY;
         ErrorType errorType = ErrorType.INVALID_DATA;
         String userMessage = ex.getMessage();

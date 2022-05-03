@@ -14,7 +14,7 @@ public class ObjectNotNull implements Validator {
     @Override
     public void validate() {
 
-        if(object == null){
+        if (object == null) {
             throw new NegocioException("Objeto não pode ser nulo");
         }
     }

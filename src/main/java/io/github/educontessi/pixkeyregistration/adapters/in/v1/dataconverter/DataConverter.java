@@ -1,8 +1,8 @@
 package io.github.educontessi.pixkeyregistration.adapters.in.v1.dataconverter;
 
 
-import io.github.educontessi.pixkeyregistration.adapters.in.v1.web.exception.DtoInvalidoException;
 import io.github.educontessi.pixkeyregistration.adapters.in.v1.dto.BaseDto;
+import io.github.educontessi.pixkeyregistration.adapters.in.v1.web.exception.DtoInvalidoException;
 import io.github.educontessi.pixkeyregistration.core.model.BaseModel;
 
 import javax.validation.ConstraintViolation;
