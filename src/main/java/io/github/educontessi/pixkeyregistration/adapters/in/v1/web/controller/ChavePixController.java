@@ -1,5 +1,9 @@
 package io.github.educontessi.pixkeyregistration.adapters.in.v1.web.controller;
 
+import io.github.educontessi.pixkeyregistration.adapters.in.documentation.SwaggerDocumentationDELETE;
+import io.github.educontessi.pixkeyregistration.adapters.in.documentation.SwaggerDocumentationGET;
+import io.github.educontessi.pixkeyregistration.adapters.in.documentation.SwaggerDocumentationPATCH;
+import io.github.educontessi.pixkeyregistration.adapters.in.documentation.SwaggerDocumentationPOST;
 import io.github.educontessi.pixkeyregistration.adapters.in.v1.datamanager.ChavePixDataManager;
 import io.github.educontessi.pixkeyregistration.adapters.in.v1.dto.ChavePixDto;
 import io.github.educontessi.pixkeyregistration.core.filter.ChavePixFilter;
@@ -22,12 +26,14 @@ public class ChavePixController {
     }
 
     @PostMapping
+    @SwaggerDocumentationPOST
     public ResponseEntity<ChavePixDto> save(@PathVariable String tipoPessoa,
                                             @RequestBody ChavePixDto dto) {
         return ResponseEntity.ok(dataManager.save(dto, tipoPessoa));
     }
 
     @PatchMapping("/alterar-chave/{valorChave}")
+    @SwaggerDocumentationPATCH
     public ResponseEntity<ChavePixDto> path(@PathVariable String tipoPessoa,
                                             @PathVariable String valorChave,
                                             @RequestBody ChavePixDto dto) {
@@ -35,18 +41,21 @@ public class ChavePixController {
     }
 
     @DeleteMapping("/{id}")
+    @SwaggerDocumentationDELETE
     public ResponseEntity<ChavePixDto> path(@PathVariable String tipoPessoa,
                                             @PathVariable UUID id) {
         return ResponseEntity.ok(dataManager.delete(id, tipoPessoa));
     }
 
     @GetMapping("/{id}")
+    @SwaggerDocumentationGET
     public ResponseEntity<ChavePixDto> findById(@PathVariable String tipoPessoa,
                                                 @PathVariable UUID id) {
         return ResponseEntity.ok(dataManager.findById(id, tipoPessoa));
     }
 
     @GetMapping
+    @SwaggerDocumentationGET
     public ResponseEntity<List<ChavePixDto>> search(@PathVariable String tipoPessoa,
                                                     ChavePixFilter chavePixFilter) {
         return ResponseEntity.ok(dataManager.search(chavePixFilter, tipoPessoa));
