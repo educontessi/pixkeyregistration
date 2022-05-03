@@ -10,7 +10,7 @@ public class ChavePixInDataConverter extends DataConverter<ChavePix, ChavePixDto
 
     @Override
     public void copyToModel(ChavePix model, ChavePixDto dto) {
-        BeanUtils.copyProperties(dto, model, getIgnoreProperties());
+        BeanUtils.copyProperties(dto, model);
         isValid(model);
     }
 

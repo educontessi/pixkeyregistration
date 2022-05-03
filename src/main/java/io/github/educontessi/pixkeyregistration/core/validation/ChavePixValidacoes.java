@@ -46,9 +46,9 @@ public class ChavePixValidacoes {
         return validators;
     }
 
-    public List<Validator> validationsOnGET(ChavePix chavePix) {
+    public List<Validator> validationsOnSearch(List<ChavePix> lista) {
         List<Validator> validators = new ArrayList<>();
-        validators.add(new ValidacaoChavePixInativada(chavePix));
+        validators.add(new ValidacaoPesquisaListaVazia(lista));
         return validators;
     }
 

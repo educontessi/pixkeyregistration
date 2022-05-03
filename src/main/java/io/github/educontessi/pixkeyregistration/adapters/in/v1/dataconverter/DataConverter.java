@@ -9,7 +9,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-import java.util.HashSet;
 import java.util.Set;
 
 public abstract class DataConverter<M extends BaseModel, D extends BaseDto> {
@@ -17,13 +16,6 @@ public abstract class DataConverter<M extends BaseModel, D extends BaseDto> {
     public abstract void copyToModel(M model, D dto);
 
     public abstract D convertToDto(D dto, M model);
-
-    protected String[] getIgnoreProperties() { // todo: rever isso
-        Set<String> list = new HashSet<>();
-        //list.add("created");
-        //list.add("changed");
-        return list.toArray(new String[0]);
-    }
 
     protected void isValid(M model) {
         ValidatorFactory factory = Validation.buildDefaultValidatorFactory();

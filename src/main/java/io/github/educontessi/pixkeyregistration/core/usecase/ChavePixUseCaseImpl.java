@@ -40,16 +40,13 @@ public class ChavePixUseCaseImpl implements ChavePixUseCasePort {
     @Override
     public ChavePix findById(UUID id) {
         Optional<ChavePix> optionalSaved = repository.findById(id);
-        return optionalSaved.orElseThrow(() -> new EntityNotFoundException(id));  // todo: padronizar validacao
+        return optionalSaved.orElseThrow(() -> new EntityNotFoundException(id));
     }
 
     @Override
     public List<ChavePix> search(ChavePixFilter filter) {
         List<ChavePix> lista = repository.search(filter);
-        if (lista.isEmpty()) { // todo: padronizar validacao
-            throw new EntityNotFoundException("Não encontrado");
-        }
-
+        chavePixValidacoes.validationsOnSearch(lista).forEach(Validator::validate);
         return lista;
     }
 

@@ -34,30 +34,26 @@ public class ChavePixController {
 
     @PatchMapping("/alterar-chave/{valorChave}")
     @SwaggerDocumentationPATCH
-    public ResponseEntity<ChavePixDto> path(@PathVariable String tipoPessoa,
-                                            @PathVariable String valorChave,
+    public ResponseEntity<ChavePixDto> path(@PathVariable String valorChave,
                                             @RequestBody ChavePixDto dto) {
-        return ResponseEntity.ok(dataManager.path(valorChave, dto, tipoPessoa));
+        return ResponseEntity.ok(dataManager.path(valorChave, dto));
     }
 
     @DeleteMapping("/{id}")
     @SwaggerDocumentationDELETE
-    public ResponseEntity<ChavePixDto> path(@PathVariable String tipoPessoa,
-                                            @PathVariable UUID id) {
-        return ResponseEntity.ok(dataManager.delete(id, tipoPessoa));
+    public ResponseEntity<ChavePixDto> path(@PathVariable UUID id) {
+        return ResponseEntity.ok(dataManager.delete(id));
     }
 
     @GetMapping("/{id}")
     @SwaggerDocumentationGET
-    public ResponseEntity<ChavePixDto> findById(@PathVariable String tipoPessoa,
-                                                @PathVariable UUID id) {
-        return ResponseEntity.ok(dataManager.findById(id, tipoPessoa));
+    public ResponseEntity<ChavePixDto> findById(@PathVariable UUID id) {
+        return ResponseEntity.ok(dataManager.findById(id));
     }
 
     @GetMapping
     @SwaggerDocumentationGET
-    public ResponseEntity<List<ChavePixDto>> search(@PathVariable String tipoPessoa,
-                                                    ChavePixFilter chavePixFilter) {
-        return ResponseEntity.ok(dataManager.search(chavePixFilter, tipoPessoa));
+    public ResponseEntity<List<ChavePixDto>> search(ChavePixFilter chavePixFilter) {
+        return ResponseEntity.ok(dataManager.search(chavePixFilter));
     }
 }

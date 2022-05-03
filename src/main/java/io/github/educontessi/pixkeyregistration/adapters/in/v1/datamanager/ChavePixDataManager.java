@@ -31,27 +31,23 @@ public class ChavePixDataManager {
         return dataConverter.convertToDto(dto, model);
     }
 
-    public ChavePixDto path(String valorChave, ChavePixDto dto, String tipoPessoaPathVariable) {
-        TipoPessoa tipoPessoa = TipoPessoa.valueOfPathVariable(tipoPessoaPathVariable);
+    public ChavePixDto path(String valorChave, ChavePixDto dto) {
         var model = chavePixUseCasePort.path(dto.getId(), valorChave);
         model = chavePixUseCasePort.save(model);
         return dataConverter.convertToDto(dto, model);
     }
 
-    public ChavePixDto delete(UUID id, String tipoPessoaPathVariable) {
-        TipoPessoa tipoPessoa = TipoPessoa.valueOfPathVariable(tipoPessoaPathVariable);
+    public ChavePixDto delete(UUID id) {
         var model = chavePixUseCasePort.delete(id);
         return dataConverter.convertToDto(model);
     }
 
-    public ChavePixDto findById(UUID id, String tipoPessoaPathVariable) {
-        TipoPessoa tipoPessoa = TipoPessoa.valueOfPathVariable(tipoPessoaPathVariable);
+    public ChavePixDto findById(UUID id) {
         var model = chavePixUseCasePort.findById(id);
         return dataConverter.convertToDto(model);
     }
 
-    public List<ChavePixDto> search(ChavePixFilter chavePixFilter, String tipoPessoaPathVariable) {
-        TipoPessoa tipoPessoa = TipoPessoa.valueOfPathVariable(tipoPessoaPathVariable);
+    public List<ChavePixDto> search(ChavePixFilter chavePixFilter) {
         List<ChavePix> lista = chavePixUseCasePort.search(chavePixFilter);
         return lista.stream().map(dataConverter::convertToDto).toList();
     }
