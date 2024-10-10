@@ -3,7 +3,7 @@ package io.github.educontessi.pixkeyregistration.adapters.out.persistence.servic
 import io.github.educontessi.pixkeyregistration.adapters.out.spring.SpringContext;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
 import io.github.educontessi.pixkeyregistration.core.validation.Validator;
-import io.github.educontessi.pixkeyregistration.ports.out.ValidacoesPort;
+import io.github.educontessi.pixkeyregistration.core.ports.out.ValidacoesPort;
 
 /**
  * @author Eduardo Possamai Contessi

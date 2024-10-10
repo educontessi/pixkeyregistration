@@ -1,14 +1,13 @@
 package io.github.educontessi.pixkeyregistration.adapters.in.v1.dataconverter;
 
-
 import io.github.educontessi.pixkeyregistration.adapters.in.v1.dto.BaseDto;
 import io.github.educontessi.pixkeyregistration.adapters.in.v1.web.exception.DtoInvalidoException;
 import io.github.educontessi.pixkeyregistration.core.model.BaseModel;
+import jakarta.validation.ConstraintViolation;
+import jakarta.validation.Validation;
+import jakarta.validation.Validator;
+import jakarta.validation.ValidatorFactory;
 
-import javax.validation.ConstraintViolation;
-import javax.validation.Validation;
-import javax.validation.Validator;
-import javax.validation.ValidatorFactory;
 import java.util.Set;
 
 public abstract class DataConverter<M extends BaseModel, D extends BaseDto> {

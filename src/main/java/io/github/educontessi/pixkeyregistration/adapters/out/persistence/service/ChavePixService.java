@@ -5,7 +5,7 @@ import io.github.educontessi.pixkeyregistration.adapters.out.persistence.entity.
 import io.github.educontessi.pixkeyregistration.adapters.out.persistence.repository.ChavePixRepository;
 import io.github.educontessi.pixkeyregistration.core.filter.ChavePixFilter;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
-import io.github.educontessi.pixkeyregistration.ports.out.ChavePixRepositoryPort;
+import io.github.educontessi.pixkeyregistration.core.ports.out.ChavePixRepositoryPort;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

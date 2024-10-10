@@ -3,9 +3,9 @@ package io.github.educontessi.pixkeyregistration.adapters.out.persistence.entity
 import io.github.educontessi.pixkeyregistration.core.enums.TipoChave;
 import io.github.educontessi.pixkeyregistration.core.enums.TipoConta;
 import io.github.educontessi.pixkeyregistration.core.enums.TipoPessoa;
+import jakarta.persistence.*;
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.*;
 import java.util.UUID;
 
 @Entity

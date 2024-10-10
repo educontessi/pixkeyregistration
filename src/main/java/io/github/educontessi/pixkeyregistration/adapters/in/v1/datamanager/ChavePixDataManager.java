@@ -5,7 +5,7 @@ import io.github.educontessi.pixkeyregistration.adapters.in.v1.dto.ChavePixDto;
 import io.github.educontessi.pixkeyregistration.core.enums.TipoPessoa;
 import io.github.educontessi.pixkeyregistration.core.filter.ChavePixFilter;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
-import io.github.educontessi.pixkeyregistration.ports.in.ChavePixUseCasePort;
+import io.github.educontessi.pixkeyregistration.core.ports.in.ChavePixUseCasePort;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -2,7 +2,7 @@ package io.github.educontessi.pixkeyregistration.core.validation;
 
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
 import io.github.educontessi.pixkeyregistration.core.validation.regrasdenegocio.*;
-import io.github.educontessi.pixkeyregistration.ports.out.ValidacoesPort;
+import io.github.educontessi.pixkeyregistration.core.ports.out.ValidacoesPort;
 
 import java.util.ArrayList;
 import java.util.List;

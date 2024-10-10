@@ -1,4 +1,4 @@
-package io.github.educontessi.pixkeyregistration.ports.in;
+package io.github.educontessi.pixkeyregistration.core.ports.in;
 
 import io.github.educontessi.pixkeyregistration.core.filter.ChavePixFilter;
 import io.github.educontessi.pixkeyregistration.core.model.ChavePix;
